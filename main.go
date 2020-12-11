@@ -2,6 +2,7 @@ package main
 
 import(
 	"fmt"
+	"math/rand"
 )
 
 func main() {
@@ -15,5 +16,16 @@ func main() {
 	var maxLen int
 	fmt.Scanf("%d", &maxLen)
 
-	fmt.Printf("You entered minLen=%v and maxLen=%v \n", minLen, maxLen)
+	fmt.Printf("Your random password is %v\n", genPassword(minLen, maxLen))
+}
+
+func genPassword(minLen int, maxLen int) string {
+	// chars used in generated passwords
+	var chars = []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()-=+~?")
+
+	// choose a random length within the parameters
+	var length = rand.Intn(maxLen - minLen) + minLen
+
+	fmt.Printf("chars:%v \nlength:%v", chars, length)
+	return "x"
 }

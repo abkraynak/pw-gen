@@ -19,16 +19,11 @@ func main() {
 	genPassword(len)
 }
 
-func randomInRange(min int, max int) (int) {
-	var err error
+func randomInRange(min int, max int) (int, error) {
 	if max - min <= 0 {
-		err = errors.New("Range of values is zero or negative")
-		
+		return -1, errors.New("Range of values is zero or negative")
 	}
-	if err != nil {
-		fmt.Println(err)
-	}
-	return rand.Intn(max - min) + min	
+	return rand.Intn(max - min) + min, nil	
 }
 
 func genPassword(len int) (int) {
@@ -41,7 +36,7 @@ func genPassword(len int) (int) {
 	rand.Seed(SEED)
 
 	for i := 1; i < len; i++ {
-		randChar := randomInRange(minChar, maxChar)
+		randChar, _ := randomInRange(minChar, maxChar)
 		newChar := string(byte(randChar))
 		fmt.Print(newChar)
 	}

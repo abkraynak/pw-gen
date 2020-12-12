@@ -8,15 +8,18 @@ import(
 )
 
 func main() {
-	fmt.Printf("Random Password Generator\n")
-
-	var len int
-
-	fmt.Printf("Enter desired password length : ")
-	fmt.Scanf("%d", &len)
-
-	fmt.Print("Your random password is : ")
-	genPassword(len)
+	fmt.Print("Random Password Generator")
+	fmt.Println("enter 0 or negative to quit")
+	for {
+		var len int
+		fmt.Printf("Enter desired password length : ")
+		fmt.Scanf("%d", &len)
+		if len <= 0 {
+			break
+		}
+		fmt.Print("Your random password is : ")
+		genPassword(len)
+	}
 }
 
 func randomInRange(min int, max int) (int, error) {

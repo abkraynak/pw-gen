@@ -1,6 +1,7 @@
-/Users/andrewkraynak/go/src/pw-gen package main
+package main
 
 import(
+	"errors"
 	"fmt"
 	"math/rand"
 	"time"
@@ -19,7 +20,15 @@ func main() {
 }
 
 func randomInRange(min int, max int) (int) {
-	return rand.Intn(max - min) + min
+	var err error
+	if max - min <= 0 {
+		err = errors.New("Range of values is zero or negative")
+		
+	}
+	if err != nil {
+		fmt.Println(err)
+	}
+	return rand.Intn(max - min) + min	
 }
 
 func genPassword(len int) (int) {

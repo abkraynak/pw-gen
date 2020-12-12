@@ -1,3 +1,5 @@
+
+
 package main
 
 import(
@@ -8,8 +10,8 @@ import(
 )
 
 func main() {
-	fmt.Print("Random Password Generator")
-	fmt.Println("enter 0 or negative to quit")
+	fmt.Println("Random Password Generator")
+	fmt.Println()
 	for {
 		var len int
 		fmt.Printf("Enter desired password length : ")

@@ -15,7 +15,7 @@ func main() {
 	fmt.Printf("Enter desired password length : ")
 	fmt.Scanf("%d", &len)
 
-	fmt.Print("Your random password is :")
+	fmt.Print("Your random password is : ")
 	genPassword(len)
 }
 

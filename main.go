@@ -26,7 +26,7 @@ func randomInRange(min int, max int) (int, error) {
 	return rand.Intn(max - min) + min, nil	
 }
 
-func genPassword(len int) (int) {
+func genPassword(len int) {
 	// range of ASCII characters able to type
 	minChar := 33
 	maxChar := 126
@@ -41,5 +41,4 @@ func genPassword(len int) (int) {
 		fmt.Print(newChar)
 	}
 	fmt.Println()
-	return 0
 }

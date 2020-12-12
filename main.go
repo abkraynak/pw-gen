@@ -3,29 +3,44 @@ package main
 import(
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 func main() {
 	fmt.Printf("Random Password Generator\n")
 
-	fmt.Printf("Enter the minimum length : ")
-	var minLen int
-	fmt.Scanf("%d", &minLen)
+	var len int
 
-	fmt.Printf("Enter the maximum length : ")
-	var maxLen int
-	fmt.Scanf("%d", &maxLen)
+	fmt.Printf("Enter desired password length : ")
+	fmt.Scanf("%d", &len)
 
-	fmt.Printf("Your random password is %v\n", genPassword(minLen, maxLen))
+	fmt.Print("Your random password is :")
+	genPassword(len)
 }
 
-func genPassword(minLen int, maxLen int) string {
-	// chars used in generated passwords
-	var chars = []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*()-=+~?")
+func randomInRange(min int, max int) int {
+	return rand.Intn(max - min) + min
+}
 
-	// choose a random length within the parameters
-	var length = rand.Intn(maxLen - minLen) + minLen
+func genPassword(len int) int {
+	// range of ASCII characters able to type
+	minChar := 33
+	maxChar := 126
 
-	fmt.Printf("chars:%v \nlength:%v", chars, length)
-	return "x"
+	// seed value to initialize the random number
+	SEED := time.Now().Unix()
+	rand.Seed(SEED)
+
+	i := 1
+	for {
+		randChar := randomInRange(minChar, maxChar)
+		newChar := string(byte(randChar))
+		fmt.Print(newChar)
+		if i == len {
+			break
+		}
+		i++
+	}
+	fmt.Println()
+	return 0
 }
